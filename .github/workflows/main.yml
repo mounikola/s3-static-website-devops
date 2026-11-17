@@ -1,0 +1,19 @@
+name: Validate static website
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Check homepage exists
+        run: test -f index.html
+
+      - name: Check page has a title
+        run: grep -q '<title>' index.html
