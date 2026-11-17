@@ -1,4 +1,11 @@
 terraform {
+  backend "s3" {
+    bucket       = "mounikola-devops-tfstate-2026-1117"
+    key          = "s3-static-website/terraform.tfstate"
+    region       = "ap-southeast-2"
+    encrypt      = true
+    use_lockfile = true
+  }
   required_version = ">= 1.5"
   required_providers {
     aws = {
